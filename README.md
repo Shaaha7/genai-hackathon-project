@@ -129,6 +129,14 @@ Vector embedding retrieval (e.g. FAISS) would improve answer quality on large do
 
 #Working Project Images
 <img width="1919" height="827" alt="image" src="https://github.com/user-attachments/assets/f4433bc1-653a-4baa-9c89-017f64007389" />
+<img width="1904" height="719" alt="image" src="https://github.com/user-attachments/assets/c0be85d9-3b24-406b-8183-408a46d1deef" />
+<img width="1905" height="802" alt="image" src="https://github.com/user-attachments/assets/bfa2eb1d-1683-4f4c-bdbf-d1553d78b271" />
+<img width="1531" height="507" alt="image" src="https://github.com/user-attachments/assets/ce4bad39-e8db-4eb4-a4ce-60ce98be8e70" />
+<img width="1531" height="559" alt="image" src="https://github.com/user-attachments/assets/ef7b929c-919f-4b6a-a136-37686edecb79" />
+
+
+
+
 
 
 ## Author
