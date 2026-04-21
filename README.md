@@ -1,257 +1,134 @@
-# 🧠 DocuMind AI — Distinction-Level Hackathon Submission
+# 🧠 DocuMind AI
 
-## 📌 Problem Statement
+> **AI-powered document intelligence — grounded answers, risk detection, and entity extraction from any PDF.**
 
-Professionals and students often struggle to quickly extract risks, entities, compliance issues, and strategic insights from long documents. Manual analysis is slow, error‑prone, and difficult to verify.
-
-**DocuMind AI solves this problem by providing grounded document intelligence using retrieval‑based Large Language Model reasoning with confidence‑supported answers.**
+🔗 **Live Demo:** [https://genai-hackathon-project-i5dgaxxgdgyfd9eu3jaqxj.streamlit.app/](https://genai-hackathon-project-i5dgaxxgdgyfd9eu3jaqxj.streamlit.app/)
 
 ---
 
-## 🚀 Solution Overview
+## The Problem
 
-DocuMind AI is a Streamlit-based intelligent document analysis assistant that allows users to upload PDFs and:
+Contracts, reports, and policy documents are long, dense, and full of language designed to be hard to read. Analysts, students, and business owners regularly sign or act on documents they haven't fully understood — not because they're careless, but because manual review is slow and error-prone.
 
-* Ask grounded questions
-* Detect risks automatically
-* Extract entities and financial values
-* Compare documents side‑by‑side
-* Generate structured executive summaries
-* Visualize document intelligence metrics
-
-The system ensures responses are generated **only from retrieved document context**, improving reliability and reducing hallucination risk.
+DocuMind AI turns a 30-page PDF into a structured, queryable intelligence report in under 15 seconds.
 
 ---
 
-## 🤖 How the AI System Works (Pipeline)
+## What It Does
 
-1. User uploads PDF document(s)
-2. Text is extracted using PyPDF
-3. Document is split into logical chunks
-4. Relevant chunks retrieved using keyword‑overlap retrieval
-5. Gemini model generates grounded answers
-6. Confidence score calculated
-7. Evidence quote returned to the user
-8. Groq fallback model activates if Gemini unavailable
+Upload any PDF and the system immediately produces:
 
-This architecture improves reliability, interpretability, and availability.
+- **Executive summary** with selectable focus (general, legal, financial, HR, or technical)
+- **Risk detection** with severity levels — high 🔴, medium 🟡, low 🟢
+- **Entity extraction** — people, organisations, locations, dates, monetary values
+- **6-dimension radar chart** scoring Risk, Financial Impact, Operational Complexity, Compliance, Strategic Importance, and Urgency
+- **Grounded Q&A** — ask anything in plain English, receive an answer with a direct evidence quote and a confidence rating
+- **Document comparison** — upload two documents and get a structured side-by-side AI analysis
 
----
-
-## 🧩 Key Features
-
-### 📄 Grounded Q&A
-
-Ask questions about documents and receive:
-
-* evidence‑supported answers
-* confidence score
-* source paragraph references
-
-### 📊 6D Document Intelligence Radar
-
-Visualizes:
-
-* Risk
-* Financial impact
-* Operational complexity
-* Compliance exposure
-* Strategic importance
-* Urgency level
-
-### ⚠️ Risk Detection Engine
-
-Automatically identifies:
-
-* legal risks
-* compliance concerns
-* financial exposure indicators
-
-### 🧾 Entity Extraction
-
-Detects:
-
-* people
-* organisations
-* locations
-* dates
-* monetary values
-
-### 📑 Document Comparison
-
-Side‑by‑side AI comparison showing:
-
-* similarities
-* differences
-* strategic implications
-
-### 📈 Sentiment Analysis Gauge
-
-Displays overall document tone:
-
-* positive
-* neutral
-* risk‑sensitive
-
-### 🧠 Executive Decision Summary
-
-Provides quick insights:
-
-* Risk Level
-* Financial Exposure
-* Compliance Flags
-* Recommended Action
-
-Designed for fast decision‑making workflows.
+Every answer in the Q&A is grounded strictly in the uploaded document. If the information isn't there, the system says so rather than guessing.
 
 ---
 
-## 🏗️ Architecture
-
-Frontend:
-
-* Streamlit
-
-Primary Model:
-
-* Google Gemini Flash
-
-Fallback Model:
-
-* Groq (Llama 3.3 70B)
-
-Processing:
-
-* PyPDF document parsing
-* keyword‑overlap retrieval grounding
-
-Visualisation:
-
-* Plotly radar charts
-
----
-
-## 🛡️ Reliability Strategy
-
-DocuMind AI improves trust using:
-
-* retrieval‑based grounding
-* confidence scoring
-* evidence quotes
-* fallback LLM architecture
-* document‑scope guardrail responses
-
-Example guardrail behaviour:
-
-> "This question cannot be answered because it is outside the uploaded document context."
-
----
-
-## 🌐 Live Deployment
-
-Streamlit App:
-
-(Add your deployed Streamlit link here)
-
-Example:
-
-[https://your-streamlit-link.streamlit.app](https://your-streamlit-link.streamlit.app)
-
----
-
-## 🧪 Example Workflow
-
-1. Upload contract PDF
-2. Ask:
-
-"What are the penalty clauses?"
-
-System returns:
-
-* grounded answer
-* confidence score
-* supporting paragraph
-* detected risk level
-
----
-
-## ⚙️ Installation (Local Setup)
-
-Clone repository:
+## How It Works
 
 ```
+PDF Upload
+    │
+    ▼
+Text Extraction (PyPDF, page-aware)
+    │
+    ▼
+Chunking (700-word chunks, 80-word overlap)
+    │
+    ▼
+Keyword-Overlap Retrieval  ◄── User Question
+    │
+    ▼
+Grounded Prompt → Gemini Flash
+    │  (fallback if unavailable)
+    └──────────────────► Groq / Llama 3.3 70B
+    │
+    ▼
+Answer + Evidence Quote + Confidence Level
+```
+
+The dual-model fallback means the service stays available even if the primary API is down.
+
+---
+
+## Course Concepts Demonstrated
+
+| Concept | Where it appears |
+|---|---|
+| Retrieval-Augmented Generation (RAG) | Chunk retrieval before every Q&A answer |
+| Grounding | Answers sourced only from document context |
+| Guardrail behaviour | Refuses to answer outside document scope |
+| Structured prompt design | JSON extraction, confidence formatting, focus-mode summaries |
+| Fallback / reliability architecture | Gemini → Groq automatic failover |
+| Deployment | Live on Streamlit Cloud |
+| Evaluation awareness | Confidence scoring + evidence quotes on every response |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend & app | Streamlit |
+| Primary LLM | Google Gemini Flash |
+| Fallback LLM | Groq (Llama 3.3 70B) |
+| PDF parsing | PyPDF |
+| Visualisation | Plotly |
+| Secrets management | `.env` / Streamlit secrets |
+
+---
+
+## Local Setup
+
+```bash
 git clone https://github.com/your-username/documind-ai.git
 cd documind-ai
-```
-
-Install dependencies:
-
-```
 pip install -r requirements.txt
 ```
 
-Create `.env` file:
+Create a `.env` file in the project root:
 
 ```
 GEMINI_API_KEY=your_key_here
 GROQ_API_KEY=your_key_here
 ```
 
-Run application:
+Run the app:
 
-```
+```bash
 streamlit run app.py
 ```
 
----
-
-## 📚 Course Concepts Demonstrated
-
-This project integrates key Generative AI engineering ideas:
-
-* Retrieval‑Augmented Generation (RAG)
-* grounded responses
-* guardrail behaviour
-* fallback model architecture
-* deployment pipeline
-* structured prompt design
-* confidence signalling
+The `GROQ_API_KEY` is optional — the app runs on Gemini alone, but the fallback will be inactive.
 
 ---
 
-## 📊 Why This Project Matters
+## Project Structure
 
-DocuMind AI transforms static documents into interactive decision‑support systems.
-
-It helps:
-
-* analysts
-* students
-* researchers
-* compliance reviewers
-* business stakeholders
-
-understand complex documents faster and more reliably.
+```
+documind-ai/
+├── app.py            # Full application — extraction, AI, charts, UI
+├── requirements.txt  # Python dependencies
+├── .env              # API keys (not committed)
+├── README.md         # This file
+└── GRANDMA.md        # Plain-English explanation for non-technical readers
+```
 
 ---
 
-## 🚀 Future Improvements
+## Possible Future Extensions
 
-Possible extensions:
-
-* vector database retrieval
-* multi‑document memory workspace
-* clause‑level highlighting UI
-* multilingual support
-* citation ranking system
+Vector embedding retrieval (e.g. FAISS) would improve answer quality on large documents. Clause-level page highlighting, multilingual support, and a persistent multi-document workspace are natural next steps.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-Shabeer Ahamed Kamal
-MSIS: M01087870
-
-GenAI Hackathon Submission
-
-Built using Streamlit + Gemini + Groq
+**Shabeer Ahamed Kamal** — M01087870
+CST4625 Generative AI — Hackathon Submission
+Built with Streamlit · Google Gemini · Groq
