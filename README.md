@@ -1,149 +1,256 @@
-<<<<<<< HEAD
-# genai-hackathon-project
-=======
-# 🧠 DocuMind AI — Hackathon Edition
+# 🧠 DocuMind AI — Distinction-Level Hackathon Submission
 
-🧠 DocuMind AI — Hackathon Edition
-DocuMind AI is an advanced document intelligence platform built with Streamlit, Google Gemini, and Groq. It allows users to upload business documents (PDFs) and perform deep analysis, including risk detection, sentiment analysis, and grounded Q&A.
+## 📌 Problem Statement
 
-🚀 Features
-Grounded Q&A: Ask any question about your document and get answers backed by direct quotes and confidence levels.
+Professionals and students often struggle to quickly extract risks, entities, compliance issues, and strategic insights from long documents. Manual analysis is slow, error‑prone, and difficult to verify.
 
-6D Document Profiling: Visualizes document metrics across Risk, Financial Impact, Complexity, Compliance, Strategy, and Urgency using Radar charts.
+**DocuMind AI solves this problem by providing grounded document intelligence using retrieval‑based Large Language Model reasoning with confidence‑supported answers.**
 
-Intelligent Insights: Automatically extracts document types, entities (People, Orgs, Locations), monetary values, and key dates.
+---
 
-Risk Detection: Scans for potential high, medium, and low-level business risks.
+## 🚀 Solution Overview
 
-Hybrid AI Engine: Dual-model architecture using Gemini 3 Flash as the primary engine with a high-speed Groq (Llama 3) fallback for maximum reliability.
+DocuMind AI is a Streamlit-based intelligent document analysis assistant that allows users to upload PDFs and:
 
-Document Comparison: Side-by-side AI analysis to find similarities and differences between two uploaded files.
+* Ask grounded questions
+* Detect risks automatically
+* Extract entities and financial values
+* Compare documents side‑by‑side
+* Generate structured executive summaries
+* Visualize document intelligence metrics
 
-🛠️ Tech Stack
-Frontend: Streamlit
+The system ensures responses are generated **only from retrieved document context**, improving reliability and reducing hallucination risk.
 
-Primary LLM: Google Gemini 3 Flash
+---
 
-Fallback LLM: Groq (Llama 3.3 70B)
+## 🤖 How the AI System Works (Pipeline)
 
-Data Visualization: Plotly
+1. User uploads PDF document(s)
+2. Text is extracted using PyPDF
+3. Document is split into logical chunks
+4. Relevant chunks retrieved using keyword‑overlap retrieval
+5. Gemini model generates grounded answers
+6. Confidence score calculated
+7. Evidence quote returned to the user
+8. Groq fallback model activates if Gemini unavailable
 
-PDF Processing: PyPDF
+This architecture improves reliability, interpretability, and availability.
 
-📋 Prerequisites
-Before running the application, ensure you have:
+---
 
-Python 3.10 or higher.
+## 🧩 Key Features
 
-A Google Gemini API Key (from Google AI Studio).
+### 📄 Grounded Q&A
 
-A Groq API Key (from Groq Console).
+Ask questions about documents and receive:
 
-⚙️ Installation & Setup
-Clone the Repository:
+* evidence‑supported answers
+* confidence score
+* source paragraph references
 
-Bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-Create a Virtual Environment:
+### 📊 6D Document Intelligence Radar
 
-Bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install Dependencies:
+Visualizes:
 
-Bash
+* Risk
+* Financial impact
+* Operational complexity
+* Compliance exposure
+* Strategic importance
+* Urgency level
+
+### ⚠️ Risk Detection Engine
+
+Automatically identifies:
+
+* legal risks
+* compliance concerns
+* financial exposure indicators
+
+### 🧾 Entity Extraction
+
+Detects:
+
+* people
+* organisations
+* locations
+* dates
+* monetary values
+
+### 📑 Document Comparison
+
+Side‑by‑side AI comparison showing:
+
+* similarities
+* differences
+* strategic implications
+
+### 📈 Sentiment Analysis Gauge
+
+Displays overall document tone:
+
+* positive
+* neutral
+* risk‑sensitive
+
+### 🧠 Executive Decision Summary
+
+Provides quick insights:
+
+* Risk Level
+* Financial Exposure
+* Compliance Flags
+* Recommended Action
+
+Designed for fast decision‑making workflows.
+
+---
+
+## 🏗️ Architecture
+
+Frontend:
+
+* Streamlit
+
+Primary Model:
+
+* Google Gemini Flash
+
+Fallback Model:
+
+* Groq (Llama 3.3 70B)
+
+Processing:
+
+* PyPDF document parsing
+* keyword‑overlap retrieval grounding
+
+Visualisation:
+
+* Plotly radar charts
+
+---
+
+## 🛡️ Reliability Strategy
+
+DocuMind AI improves trust using:
+
+* retrieval‑based grounding
+* confidence scoring
+* evidence quotes
+* fallback LLM architecture
+* document‑scope guardrail responses
+
+Example guardrail behaviour:
+
+> "This question cannot be answered because it is outside the uploaded document context."
+
+---
+
+## 🌐 Live Deployment
+
+Streamlit App:
+
+(Add your deployed Streamlit link here)
+
+Example:
+
+[https://your-streamlit-link.streamlit.app](https://your-streamlit-link.streamlit.app)
+
+---
+
+## 🧪 Example Workflow
+
+1. Upload contract PDF
+2. Ask:
+
+"What are the penalty clauses?"
+
+System returns:
+
+* grounded answer
+* confidence score
+* supporting paragraph
+* detected risk level
+
+---
+
+## ⚙️ Installation (Local Setup)
+
+Clone repository:
+
+```
+git clone https://github.com/your-username/documind-ai.git
+cd documind-ai
+```
+
+Install dependencies:
+
+```
 pip install -r requirements.txt
-If you don't have a requirements file yet, install these:
-pip install streamlit google-generativeai groq pypdf plotly python-dotenv
+```
 
-Configure Environment Variables:
-Create a file named .env in the root directory and add your keys:
+Create `.env` file:
 
-Plaintext
-GEMINI_API_KEY=your_gemini_key_here
-GROQ_API_KEY=your_groq_key_here
-Note: Ensure the .env file is saved with UTF-8 encoding.
+```
+GEMINI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
+```
 
-🏃 Running the App
-Start the Streamlit server:
+Run application:
 
-Bash
-streamlit run app.py
-
-> GenAI + LLM Module | Powered by Google Gemini + Streamlit
-
----
-
-## 🚀 Features
-
-| Feature | Description |
-|---|---|
-| **Multi-PDF Upload** | Analyse up to 3 documents at once |
-| **Smart RAG** | Keyword-overlap chunk retrieval — no vector DB needed |
-| **Grounded Q&A** | Every answer includes a direct document quote + confidence |
-| **6D Radar Profile** | Risk, Financial, Operational, Compliance, Strategic, Urgency |
-| **Auto Insights** | Entities, dates, monetary values, risks, action items, clauses |
-| **Keyword Frequency** | Top-15 keywords bar chart |
-| **Sentiment Gauge** | Document-level sentiment visualisation |
-| **Doc Comparison** | AI side-by-side analysis of two documents |
-| **Analysis Focus** | General / Legal / Financial / HR / Technical summary modes |
-| **Chat Export** | Download full conversation as `.txt` |
-
----
-
-## 🛠️ Local Setup
-
-```bash
-# 1. Clone / copy files
-mkdir documind && cd documind
-# paste app.py + requirements.txt here
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Create .env file
-echo "GEMINI_API_KEY=your_key_here" > .env
-
-# 4. Run
+```
 streamlit run app.py
 ```
 
 ---
 
-## ☁️ Deploy to Streamlit Cloud (Free)
+## 📚 Course Concepts Demonstrated
 
-1. Push `app.py` and `requirements.txt` to a **GitHub repo**
-2. Go to [share.streamlit.io](https://share.streamlit.io) → **New app**
-3. Select your repo / branch / `app.py`
-4. Click **Advanced settings → Secrets** and add:
-   ```toml
-   GEMINI_API_KEY = "your_gemini_key_here"
-   ```
-5. Click **Deploy** — live in ~60 seconds ✅
+This project integrates key Generative AI engineering ideas:
 
-> Get a free Gemini API key at: https://aistudio.google.com/apikey
-
----
-
-## 📁 File Structure
-
-```
-.
-├── app.py            ← main application
-├── requirements.txt  ← pip dependencies
-└── .env              ← local secrets (never commit this!)
-```
+* Retrieval‑Augmented Generation (RAG)
+* grounded responses
+* guardrail behaviour
+* fallback model architecture
+* deployment pipeline
+* structured prompt design
+* confidence signalling
 
 ---
 
-## 🤖 Model Fallback Chain
+## 📊 Why This Project Matters
 
-The app auto-selects the best available model on your key:
+DocuMind AI transforms static documents into interactive decision‑support systems.
 
-`gemini-1.5-flash` → `gemini-1.5-flash-latest` → `gemini-1.5-pro` → `gemini-pro`
+It helps:
+
+* analysts
+* students
+* researchers
+* compliance reviewers
+* business stakeholders
+
+understand complex documents faster and more reliably.
 
 ---
 
-*Built for the GenAI + LLM Hackathon Module.*
->>>>>>> a209a93 (Added hackathon project files)
+## 🚀 Future Improvements
+
+Possible extensions:
+
+* vector database retrieval
+* multi‑document memory workspace
+* clause‑level highlighting UI
+* multilingual support
+* citation ranking system
+
+---
+
+## 👨‍💻 Author
+
+Niranjan
+
+GenAI Hackathon Submission
+
+Built using Streamlit + Gemini + Groq
