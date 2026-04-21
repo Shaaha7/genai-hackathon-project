@@ -249,7 +249,8 @@ Possible extensions:
 
 ## 👨‍💻 Author
 
-Niranjan
+Shabeer Ahamed Kamal
+MSIS: M01087870
 
 GenAI Hackathon Submission
 
