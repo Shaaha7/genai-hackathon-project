@@ -127,6 +127,10 @@ Vector embedding retrieval (e.g. FAISS) would improve answer quality on large do
 
 ---
 
+#Working Project Images
+<img width="1919" height="827" alt="image" src="https://github.com/user-attachments/assets/f4433bc1-653a-4baa-9c89-017f64007389" />
+
+
 ## Author
 
 **Shabeer Ahamed Kamal** — M01087870
