@@ -1,4 +1,4 @@
-# GRANDMA.md
+# Non-Technical Overview
 ### *Explained like you're sitting across from me at the kitchen table*
 
 ---
